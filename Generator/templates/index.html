@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  <title>Invoice Generator</title>
+  <meta name="description" content="You can maintain and create invoices for your business
+  ">
+  <meta name="author" content="">
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+  <link rel="stylesheet" href="{% static 'css/skeleton.css' %}">
+  <link rel="icon" type="image/png" href="{% static 'images/bnb.png' %}">
+
+</head>
+<body>
+  <header>
+    <div class="container" style="margin-top: 30px;font-size: 20px;text-align: center;">
+       <nav class="two columns"><a href="{% url 'home' %}" class="button button-large">Home</a></nav>
+       <nav class="two columns"><a href="{% url 'addinvoice' %}" class="button button-large">Add Invoice</a></nav>
+       <nav class="two columns"><a href="{% url 'items' %}" class="button button-large">List Invoice</a></nav>
+       
+    
+      </div>
+    </div>
+  </header>
+  <hr>
+{% block content %}
+
+  <!-- Primary Page Layout
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <div class="container" style="margin-top: 15%; text-align: center;">
+    <div class="row">
+      <div class="six columns">
+        <div class="container">
+            <h1>Invoice Generating App</h1>
+        </div>
+     </div>
+     <div class="six columnn">
+      <div class="container">
+        {% if request.user.is_authenticated %}
+          <a class="button button-large button-primary" href="accounts/login">Login</a>
+          <a class="button button-primary" href="accounts/logout">Logout</a>
+
+        {% else %}
+        <a class="button button-large button-primary" href="accounts/login">Login</a>
+        {% endif %}
+      </div>
+   </div>
+  </div>
+
+{% endblock %}
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
+</html>
